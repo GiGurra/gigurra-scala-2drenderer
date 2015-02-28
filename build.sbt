@@ -1,5 +1,5 @@
 lazy val gigurra_util_project = RootProject(file("ext/gigurra-scala-util"))
-
+ 
 lazy val root = (project in file(".")).
   settings(
     name := "gigurra-scala-2drenderer",
