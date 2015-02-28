@@ -1,3 +1,6 @@
 [submodule "ext/gigurra-scala-util"]
 	path = ext/gigurra-scala-util
 	url = git@github.com:gigurra/gigurra-scala-util
+	branch = master
+    fetchRecurseSubmodules = true
+
