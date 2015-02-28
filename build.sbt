@@ -1,4 +1,4 @@
-lazy val gigurra_util_project = RootProject(uri("git://github.com/GiGurra/gigurra-scala-util.git"))
+lazy val gigurra_util_project = project in file("ext/gigurra-scala-util")
 
 lazy val root = (project in file(".")).
   settings(
