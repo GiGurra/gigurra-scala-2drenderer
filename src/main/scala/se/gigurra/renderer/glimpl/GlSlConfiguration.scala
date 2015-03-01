@@ -76,6 +76,7 @@ class GlSlConfiguration(
 
 object GlSlConfiguration {
   def v330(extensions: String*): GlSlConfiguration = {
+    println(s"Loading GL 3.3 configuration with extensions: ${extensions.mkString(", ")}")
     new GlSlConfiguration("330", extensions.toSet)
   }
 }

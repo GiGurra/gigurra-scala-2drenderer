@@ -47,7 +47,6 @@ object Mat4x4 {
 
   val PI = 3.14159265358979323846f
   val toRadsFast = PI / 180.0f
-  var mults = 0L
 
   /**
    * This turns out to be quite the performance hog...
@@ -56,8 +55,6 @@ object Mat4x4 {
    * Tried three different unrolled approaches, but the Jog-amp one seems to be the fastest
    */
   final def multMatrix(a: Array[Float], b: Array[Float]) {
-
-    mults += 1L
 
     // The fastest (so far)
     val b00 = b(0 + 0 * 4)

@@ -170,8 +170,6 @@ class Demo extends Widget[Demo] {
     println("nModelsDrawn: " + renderer.nModelsDrawn)
     println("nBatchDrawCalls: " + renderer.nBatchDrawCalls)
     println("fps: " + renderer.getFps())
-    println("mults: " + Mat4x4.mults)
-    Mat4x4.mults = 0
 
   }
 
