@@ -46,11 +46,7 @@ class GlRenderer2d(_init_gl: GL3ES3) extends GlRenderer(_init_gl) {
   }
 
   override final def draw(model: Model) {
-    if (model.loadedContent != null) {
-      drawStrategy.draw(gl, model.loadedContent.asInstanceOf[MegaVboModelDescriptor], colorScale, transform)
-    } else {
-      drawStrategy.draw(gl, megaVbo.getModel(gl, model), colorScale, transform)
-    }
+    drawStrategy.draw(gl, megaVbo.getModel(gl, model), colorScale, transform)
     _nModelsDrawn += 1
   }
 

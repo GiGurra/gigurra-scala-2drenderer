@@ -4,10 +4,12 @@ import javax.media.opengl.GL3ES3
 import se.gigurra.renderer.Model
 import se.gigurra.renderer.glimpl.GlShaderProgram
 import se.gigurra.renderer.glimpl.GlSlConfiguration
+import java.util.IdentityHashMap
 
 class MegaVbo(_gl_init: GL3ES3, val program: GlShaderProgram, val nVerticesMax: Int = 5000000)(implicit cfg: GlSlConfiguration) {
 
   private val attributeBuffers = new MegaVboBufferSet(_gl_init, program, nVerticesMax)
+  private val cache = new IdentityHashMap[Model, MegaVboModelDescriptor]
 
   final def startFrame(gl: GL3ES3) {
     frontSet().startFrame(gl)
@@ -30,13 +32,13 @@ class MegaVbo(_gl_init: GL3ES3, val program: GlShaderProgram, val nVerticesMax: 
 
   final def getModel(gl: GL3ES3, model: Model): MegaVboModelDescriptor = {
 
-    val cached = model.loadedContent
+    val cached = cache.get(model)
     if (cached != null) {
       cached.asInstanceOf[MegaVboModelDescriptor]
     } else {
       val out = attributeBuffers.add(gl, model)
       println(s"Added model $model at vertex offset ${out.vertexOffset} with ${model.vertexCount} vertices")
-      model.loadedContent = out
+      cache.put(model, out)
       out
     }
   }

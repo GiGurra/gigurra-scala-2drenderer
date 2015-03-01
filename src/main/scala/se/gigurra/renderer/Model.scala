@@ -4,7 +4,6 @@ class Model(val primType: PrimitiveType, val vertices: Array[Float], val colors:
   def this(primType: PrimitiveType, vertices: Array[Float], color: Color) = this(primType, vertices, color.mkArray(vertices.length / 4))
 
   val vertexCount = vertices.length / 4
-  var loadedContent: AnyRef = null
 
   def transform(t: Transform): Model = {
     val newVertices = vertices.clone
